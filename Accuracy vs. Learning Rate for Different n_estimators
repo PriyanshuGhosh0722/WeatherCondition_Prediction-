@@ -1,0 +1,25 @@
+lr = [0.15, 0.16, 0.17, 0.18, 0.20]
+n_estimators_values = range(50, 110, 10)
+
+accuracy_results = []  # To store accuracy values for each combination
+
+for i in n_estimators_values:
+    accuracy_lr = []  # To store accuracy values for a particular n_estimators value
+    for j in lr:
+        xgb_1 = XGBClassifier(n_estimators=i, learning_rate=j, random_state=14)
+        xgb_1.fit(x_train, y_train)
+        y_predict = xgb_1.predict(x_test)
+        accuracy = accuracy_score(y_test, y_predict)
+        accuracy_lr.append(accuracy)
+    accuracy_results.append(accuracy_lr)
+
+# Plotting the graph
+plt.figure(figsize=(10, 6))
+for i, n_estimators in enumerate(n_estimators_values):
+    plt.plot(lr, accuracy_results[i], label=f"n_estimators={n_estimators}")
+plt.xlabel('Learning Rate')
+plt.ylabel('Accuracy')
+plt.title('Accuracy vs. Learning Rate for Different n_estimators')
+plt.legend()
+plt.grid(True)
+plt.show()
