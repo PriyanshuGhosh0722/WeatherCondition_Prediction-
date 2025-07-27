@@ -1,4 +1,4 @@
-# README: Weather Prediction using XGBoost Regressor
+# Weather Prediction using XGBoost Regressor
 
 This repository contains a Jupyter notebook for weather data analysis and temperature prediction using machine learning techniques, primarily featuring the XGBoost Regressor, with data processing and feature engineering workflows. The dataset covers hourly weather data over several years.
 
